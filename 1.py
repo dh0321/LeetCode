@@ -1,3 +1,5 @@
+# Brute Force
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -10,6 +12,9 @@ class Solution(object):
                 if nums[i] + nums[j] == target:
                     return [i, j]
 
+# Time: O(n^2)
+# Space: O(1)
+
 '''
 Solution 1.
 def twoSum(self, nums, target):
@@ -20,6 +25,24 @@ def twoSum(self, nums, target):
 
 
 Solution 2.
+# Hash Map
+# Time: O(n)
+# Space: O(n)
+def twoSum(self, nums, target):
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    index_map = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in index_map:
+            return [index_map[complement], i]
+        index_map[num] = i
+
+
+Solution 3.
 def twoSum(self, nums: List[int], target: int) -> List[int]:
       hashmap = {}
       for i in range(len(nums)):
@@ -29,13 +52,5 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
           if complement in hashmap and hashmap[complement] != i:
               return [i, hashmap[complement]]
 
-Solution 3.
- def twoSum(self, nums: List[int], target: int) -> List[int]:
-      hashmap = {}
-      for i in range(len(nums)):
-          complement = target - nums[i]
-          if complement in hashmap:
-              return [i, hashmap[complement]]
-          hashmap[nums[i]] = i
 
 '''
