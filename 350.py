@@ -23,7 +23,31 @@ class Solution(object):
 # Space: O(n)
 
 '''
-Solution 1. 
+Solution 1.
+# do not use Counter
+# Counter return none value automatically, but dict should check it.
+
+def intersect(self, nums1, nums2):
+    """
+    :type nums1: List[int]
+    :type nums2: List[int]
+    :rtype: List[int]
+    """
+    counts = {}
+    result = []
+
+    for num in nums1:
+        counts[num] = counts.get(num, 0) + 1
+
+    for num in nums2:
+        if num in counts and counts[num] > 0:
+            result.append(num)
+            counts[num] -= 1
+
+    return result
+
+
+Solution 2. 
 class Solution(object):
     def intersect(self, nums1, nums2):
         """
