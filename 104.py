@@ -32,5 +32,38 @@ def maxDepth(self, root):
 
     return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
+# DFS
+# Time: O(n)
+# Space: O(h)
+
+'''
+
+'''
+Solution 2.
+
+from collections import deque
+
+class Solution(object):
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        
+        queue = deque([root])
+        depth = 0
+
+        while queue:
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            depth += 1
+            
+        return depth
+
+# BFS, Queue
+# Time : O(n)
+# Space : O(w)
 
 '''
