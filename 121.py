@@ -26,4 +26,25 @@ def maxProfit(self, prices):
 
     return max_profit
 
+
+Solution 2.
+# Kadane Algorithm
+# Time: O(n)
+# Space: O(1)
+
+def maxProfit(self, prices):
+    """
+    :type prices: List[int]
+    :rtype: int
+    """
+    max_current = 0
+    max_far = 0
+
+    for i in range(1, len(prices)):
+        diff = prices[i] - prices[i - 1]
+        max_current = max(0, max_current + diff)  # if negative number, restart
+        max_far = max(max_far, max_current)
+
+    return max_far
+    
 '''
