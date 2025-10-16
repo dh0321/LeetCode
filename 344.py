@@ -21,6 +21,16 @@ class Solution(object):
 
         return s
 
-
 # Time: O(n)
 # Space: O(1)
+
+
+'''
+Solution 1.
+It's not a in-place change way, but pythonic way
+
+def reverseString(s: List[str]) -> None:
+    s[:] = s[::-1]
+    return s
+
+'''
