@@ -4,6 +4,33 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        left_idx = 0
+        right_idx = len(s) - 1
+
+        while left_idx < right_idx:
+            if not s[left_idx].isalnum():
+                left_idx += 1
+                continue
+
+            if not s[right_idx].isalnum():
+                right_idx -= 1
+                continue
+
+            if s[left_idx].lower() == s[right_idx].lower():
+                left_idx += 1
+                right_idx -= 1
+            else:
+                return False
+        return True
+
+'''
+Solution 1.
+
+def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
         i = 0
         j = len(s) - 1
 
@@ -24,8 +51,8 @@ class Solution(object):
 # Time: O(n)
 # Space: O(1)
 
-'''
-Solution 1.
+Solution 2.
+
 def isPalindrome(self, s):
     """
     :type s: str
