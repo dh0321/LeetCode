@@ -22,6 +22,24 @@ class Solution(object):
 
 '''
 Solution 1.
+def isValid(self, s):
+    parentheses_pair = {"(": ")", "[": "]", "{": "}"}
+    stack = []
+
+    for ch in s:
+        if ch in parentheses_pair:
+            stack.append(ch)
+        elif ch in parentheses_pair.values():
+            if not stack or parentheses_pair[stack[-1]] != ch:
+                return False
+            stack.pop()
+        else:
+            return False
+
+    return not stack
+
+
+Solution 2.
 
 def isValid(self, s):
 
